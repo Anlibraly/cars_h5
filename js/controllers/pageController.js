@@ -38,8 +38,8 @@ app.controller('pageController', ['$scope', '$location', '$routeParams', '$http'
     if($scope.pageId==0){
     	setTimeout(function(){
     		$scope.nextPage();
-/*    		var Media = document.getElementById("music");
-    		Media.play();*/
-    	},8000);
+    		var Media = document.getElementById("music");
+    		Media.play();
+    	},3500);
     }
 }]);
