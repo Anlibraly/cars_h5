@@ -59,8 +59,8 @@ app.controller('pageController', ['$scope', '$location', '$routeParams', '$http'
     if($scope.pageId==0){
     	setTimeout(function(){
     		$scope.nextPage();
-    		var Media = document.getElementById("music");
-    		Media.play();
+/*    		var Media = document.getElementById("music");
+    		Media.play();*/
     	},6000);
     }
 }]);
