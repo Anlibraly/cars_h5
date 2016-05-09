@@ -1,7 +1,13 @@
 app.controller('pageController', ['$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http) {
-    $scope.pageId = $routeParams.pageId || 1;
+	$scope.pageId = $routeParams.pageId || 0;
+    if($scope.pageId > 0){
+    	$("#musicBtn").show();
+    }
     $scope.nextPage = function() {
         $scope.pageId = (++$scope.pageId % 6) || 5;
+        if($scope.pageId > 0){
+        	$("#musicBtn").show();
+        }
         $location.path("/page/" + $scope.pageId);
         $scope.pageClass = 'slideup';
         $scope.$apply();
@@ -9,7 +15,8 @@ app.controller('pageController', ['$scope', '$location', '$routeParams', '$http'
     $scope.to4Page = function() {
     	$location.path("/page/4");
     };
-    var swiper = new Swiper('.swiper-container', {
+
+	var swiper = new Swiper('.swiper-container', {
         pagination: '.swiper-pagination',
         paginationClickable: true,
         autoplay: 3000
@@ -52,8 +59,8 @@ app.controller('pageController', ['$scope', '$location', '$routeParams', '$http'
     if($scope.pageId==0){
     	setTimeout(function(){
     		$scope.nextPage();
-/*    		var Media = document.getElementById("music");
-    		Media.play();*/
+    		var Media = document.getElementById("music");
+    		Media.play();
     	},6000);
     }
 }]);

@@ -16,6 +16,7 @@
 </head>
 <body scroll="no">
 	<div class="container">
+		<img id="musicBtn" src="img/music.png" style="display:none;position: absolute;z-index: 1000;right: 0.8rem;top: 2.5rem;width: 0.8rem;" class="tupain" onclick="playMusic();"/>
 		<div class="jumbotron content">
 			<div ng-view ng-class="pageClass" class="page">
 
@@ -23,7 +24,7 @@
 		</div>
 	</div>
 
-	<audio id="music" autoplay="autoplay" loop="loop" preload="auto" src="img/music.mp3"></audio> 
+	<audio id="music" loop="loop" preload="auto" src="img/music.mp3"></audio> 
 
 	<script src="lib/angular/angular.js"></script>
 	<script src="lib/angular/angular-route.min.js"></script>
@@ -34,5 +35,21 @@
 	<script src="lib/swiper.min.js" ></script>
 	<script src="lib/jquery.touchSwipe.min.js"></script>
 	<script src="js/controllers/pageController.js"></script>	
+	<script>
+	    var playMusic = function(){
+	    	 //alert(111);
+	    	 var Media = document.getElementById("music");
+	    	 if(Media!==null){             
+	    		  //检测播放是否已暂停.audio.paused 在播放器播放时返回false.
+	    		  if(Media.paused){                 
+	    			  Media.play();// 这个就是播放  
+	    			  $("#musicBtn").addClass('tupain');
+	    		  }else{
+	    			  Media.pause();// 这个就是暂停
+	    			  $("#musicBtn").removeClass('tupain');
+	    		  }
+	    	} 
+	    };
+	</script>
 </body>
 </html>
