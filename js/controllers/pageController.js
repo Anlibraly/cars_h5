@@ -17,6 +17,17 @@ app.controller('pageController', ['$scope', '$location', '$routeParams', '$http'
         $scope.pageClass = 'slidedown';
         $scope.$apply();
     };    
+    $scope.tmall_p2 = function() {
+    	var c = $(".swiper-slide-active").attr("data-c");
+    	var f = $(".swiper-slide-active").attr("data-f");
+    	if(c=="#"){
+    		window.location.href=f;
+    	}else{
+    		alert(c);
+    	}
+    };
+    
+    
     $scope.pageClass = 'slideup';
     $(".content").attr("style","height:"+$(window).height()+"px");
     $(".container").swipe( {
@@ -38,8 +49,8 @@ app.controller('pageController', ['$scope', '$location', '$routeParams', '$http'
     if($scope.pageId==0){
     	setTimeout(function(){
     		$scope.nextPage();
-    		var Media = document.getElementById("music");
-    		Media.play();
-    	},3500);
+/*    		var Media = document.getElementById("music");
+    		Media.play();*/
+    	},6000);
     }
 }]);
