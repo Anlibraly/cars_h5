@@ -6,7 +6,10 @@ app.controller('pageController', ['$scope', '$location', '$routeParams', '$http'
         $scope.pageClass = 'slideup';
         $scope.$apply();
     };
-	var swiper = new Swiper('.swiper-container', {
+    $scope.to4Page = function() {
+    	$location.path("/page/4");
+    };
+    var swiper = new Swiper('.swiper-container', {
         pagination: '.swiper-pagination',
         paginationClickable: true,
         autoplay: 3000
