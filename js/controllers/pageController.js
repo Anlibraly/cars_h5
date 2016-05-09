@@ -40,6 +40,6 @@ app.controller('pageController', ['$scope', '$location', '$routeParams', '$http'
     		$scope.nextPage();
 /*    		var Media = document.getElementById("music");
     		Media.play();*/
-    	},3500);
+    	},8000);
     }
 }]);
