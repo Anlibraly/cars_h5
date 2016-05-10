@@ -61,6 +61,7 @@
 	            dataType : "json",
 	           	//jsonp: 'callback',
 	            success : function(data){
+	            	alert(data["timestamp"]);
 					wx.config({
 					    appId: 'wx8796bcf2e05d040f',
 					    timestamp: data["timestamp"],
