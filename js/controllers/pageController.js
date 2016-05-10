@@ -33,11 +33,33 @@ app.controller('pageController', ['$scope', '$location', '$routeParams', '$http'
     	if(c=="#"){
     		window.location.href=f;
     	}else{
-    		alert(c);
+    		alertDialog(c);
     	}
     };
-    
-    
+
+    $(document).on('click','a',function(){
+	      $('#loadingDiv').css('display','none'); 
+	      $('#popup').slideUp();
+	      $("#embedding").slideUp();
+			document.body.style.overflow="";
+			document.body.style.position="";
+		    window.onscroll=function(){
+			};
+    });    
+    $scope.alertDg = function(t){
+    	alertDialog(t);
+    };	
+	var alertDialog = function(text){
+		    $('#text').text(text);
+		    $('#loadingDiv').css('display','block');  
+			document.body.scrollTop = 0;
+			document.body.style.overflow="hidden";
+		    window.onscroll=function(){
+			  document.body.scrollTop = 0;
+			};	
+		    $('#popup').slideDown();
+		    $("#embedding").slideDown();
+	};
     $scope.pageClass = 'slideup';
     $(".content").attr("style","height:"+$(window).height()+"px");
     $(".container").swipe( {
@@ -59,8 +81,8 @@ app.controller('pageController', ['$scope', '$location', '$routeParams', '$http'
     if($scope.pageId==0){
     	setTimeout(function(){
     		$scope.nextPage();
-/*    		var Media = document.getElementById("music");
+    		/*var Media = document.getElementById("music");
     		Media.play();*/
-    	},6000);
+    	},4000);
     }
 }]);

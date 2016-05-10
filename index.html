@@ -7,7 +7,7 @@
 	<meta content="telephone=no" name="format-detection">
 	<meta content="email=no" name="format-detection">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
-	<title>非凡搭档</title>
+	<title>英菲尼迪   敢爱·成就非凡</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="css/swiper.min.css" />
 	<link rel="stylesheet" href="css/reset.css" />
@@ -16,15 +16,22 @@
 </head>
 <body scroll="no">
 	<div class="container">
-		<img id="musicBtn" src="img/music.png" style="display:none;position: absolute;z-index: 1000;left: 0.8rem;top: 1rem;width: 0.8rem;" class="tupain" onclick="playMusic();"/>
+		<img id="musicBtn" src="img/music.png" style="display:none;position: absolute;z-index: 1000;left: 0.8rem;top: 0.8rem;width: 0.8rem;" class="tupain" onclick="playMusic();"/>
+
 		<div class="jumbotron content">
 			<div ng-view ng-class="pageClass" class="page">
 
 			</div>
 		</div>
 	</div>
-
-	<audio id="music" autoplay="autoplay" loop="loop" preload="auto" src="img/music.mp3"></audio> 
+	<div id="loadingDiv"></div>
+	<div id="popup">
+	  <span id="text"></span>
+	</div>
+	<div id="embedding">   
+	    <a href="javascript:void(0)">关闭</a>
+	</div>
+	<audio autoplay="autoplay" id="music" loop="loop" preload="auto" src="img/music.mp3"></audio> 
 
 	<script src="lib/angular/angular.js"></script>
 	<script src="lib/angular/angular-route.min.js"></script>
@@ -33,9 +40,44 @@
 	<script src="lib/flexible.1.13.js" ></script>
 	<script src="lib/jquery.min.js"></script>
 	<script src="lib/swiper.min.js" ></script>
+	<script src="lib/jweixin-1.0.0.js"></script>
 	<script src="lib/jquery.touchSwipe.min.js"></script>
 	<script src="js/controllers/pageController.js"></script>	
-	<script>
+    <script>
+	var doman = "www.inventive.com.cn";
+          $(function () { 
+/*	         wx.config({
+                debug: false,
+                appId: 'wxb649707ffc554a4e',
+	            timestamp: 1436589872,
+	            nonceStr: 'nonceStr',
+	            signature: 'signature',
+	            jsApiList: ['onMenuShareAppMessage']
+	         });*/
+			$.get("http://"+doman+"/API/WeChatSign?uhref="+location.href.split('#')[0],function (data, status) {
+				wx.config({
+				    appId: wxb649707ffc554a4e,
+				    timestamp: data["timestamp"],
+				    nonceStr: data["noncestr"],
+				    signature: data["signature"],
+				    jsApiList: ["onMenuShareTimeline","onMenuShareAppMessage","onMenuShareQQ","onMenuShareWeibo","onMenuShareQZone"]
+				});
+			});
+              wx.ready(function () {
+              	wx.onMenuShareAppMessage({
+	                title: '英菲尼迪   敢爱·成就非凡',
+	                link: 'http://anlibraly.github.io/cars_h5', //替换成你们服务器上的地址
+	                imgUrl: 'img/share.jpg',
+	                desc: '当红综艺节目<非凡搭档>明星装备登录天猫，你，准备好了吗？还有更多车主特权尽在敢爱邦，快来参与吧！',
+	                success: function () {
+	                    // 用户确认分享后执行的回调函数
+	                },
+	                cancel: function () {
+	                    // 用户取消分享后执行的回调函数
+	                }
+            	   });
+        		});
+			});
 	    var playMusic = function(){
 	    	 //alert(111);
 	    	 var Media = document.getElementById("music");

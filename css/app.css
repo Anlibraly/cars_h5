@@ -2,6 +2,67 @@
 body {
 
 }
+#loadingDiv{
+	position: absolute;
+    display: none;
+    z-index: 2000;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+#popup{
+    position: absolute;
+    display: none;
+    z-index: 3000;
+    background-color: #FFF;
+    left: 5%;
+    top: 35%;
+    height: 21%;
+    width: 90%;
+    font-size: 15px;
+    padding: 8% 10%;
+    text-align: left;
+    border: 1px solid #bbb;
+    border-radius: 0.22rem;
+}
+[data-dpr="2"] #popup{
+    font-size: 30px;
+}
+[data-dpr="3"] #popup{
+    font-size: 45px;
+}
+#embedding{
+    position: absolute;
+    display: none;
+    top: 58%;
+    left: 40%;
+    z-index: 3000;
+}
+#embedding a{
+    background: url(../img/close.png) no-repeat;
+    background-position: left;
+    background-size: 0.6rem;
+    height: 1rem;
+    font-size: 16px;
+    line-height: 1rem;
+    padding-left: 1rem;
+    display: -webkit-box;
+}
+[data-dpr="2"] #embedding a{
+    font-size: 32px;
+}
+[data-dpr="3"] #embedding a{
+    font-size: 48px;
+}
+a{
+  text-decoration:none;
+  font-family:"微软雅黑";
+  font-size:18px;
+  color:#FFF;
+}
+
 @-webkit-keyframes rotate{
 from{-webkit-transform:rotate(0deg)}
 to{-webkit-transform:rotate(360deg)}
