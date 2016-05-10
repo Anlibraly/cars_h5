@@ -3,7 +3,7 @@ body {
 
 }
 #loadingDiv{
-	position: absolute;
+    position: absolute;
     display: none;
     z-index: 2000;
     top: 0px;
@@ -24,7 +24,7 @@ body {
     font-size: 15px;
     padding: 10% 10%;
     text-align: left;
-    border: 1px solid #bbb;
+    /*border: 1px solid #bbb;*/
     border-radius: 0.22rem;
 }
 [data-dpr="2"] #popup{
